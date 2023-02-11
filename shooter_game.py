@@ -19,6 +19,7 @@ mixer.music.load("space.ogg")
 mixer.music.play()
 fir = mixer.Sound("fire.ogg")
 
+#основной класс
 class GameSprite(sprite.Sprite):
     def __init__(self, player_image, player_x, player_y, player_speed):
         super().__init__()
@@ -29,7 +30,8 @@ class GameSprite(sprite.Sprite):
         self.rect.y = player_y
     def reset(self):
         window.blit(self.image, (self.rect.x, self.rect.y))
-
+        
+#класс для передвижения игрока
 class Player(GameSprite):
     def update(self):
         keys = key.get_pressed()
@@ -46,7 +48,7 @@ class Player(GameSprite):
             bullet = Bullet("bullet.png", self.rect.centerx ,  self.rect.top, -50)
             bullets.add(bullet)
             fir.play()
-
+#для появления нло
 class Enemy(GameSprite):
     def update(self):
         self.rect.y += self.speed
@@ -55,7 +57,8 @@ class Enemy(GameSprite):
             self.rect.x = randint(80, win_x - 80)
             self.rect.y = 0
             lost += 1
-            
+
+#для появления астеройдов
 class Asteroid(GameSprite):
     def update(self):
         self.rect.y += self.speed
@@ -64,7 +67,7 @@ class Asteroid(GameSprite):
             self.rect.x = randint(80, win_x - 80)
             self.rect.y = 0
             
-
+#для пуль
 class Bullet(GameSprite):
     def update(self):
         self.rect.y += self.speed
