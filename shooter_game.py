@@ -19,8 +19,6 @@ mixer.music.load("space.ogg")
 mixer.music.play()
 fir = mixer.Sound("fire.ogg")
 
-print('00')
-
 class GameSprite(sprite.Sprite):
     def __init__(self, player_image, player_x, player_y, player_speed):
         super().__init__()
@@ -89,7 +87,7 @@ player = Player("rocket.png", win_x/2, win_y - 80, 10)
 font = font.SysFont('Arial', 70)
 w1n = font.render("You won!", True, (255,255,255))
 lose = font.render("You lose!", True, (255,255,255))
-print('00')
+
 clock = time.Clock()
 FPS = 100
 game = True
